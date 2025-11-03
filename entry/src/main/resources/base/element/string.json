@@ -1,0 +1,24 @@
+{
+  "string": [
+    {
+      "name": "module_desc",
+      "value": "module description"
+    },
+    {
+      "name": "EntryAbility_desc",
+      "value": "description"
+    },
+    {
+      "name": "EntryAbility_label",
+      "value": "label"
+    },
+    {
+      "name": "MICreason",
+      "value": "获取音频并转为文字"
+    },
+    {
+      "name": "CAMERAreason",
+      "value": "获取视频画面并展示"
+    }
+  ]
+}
