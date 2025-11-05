@@ -1,17 +1,16 @@
 import { speechRecognizer } from '@kit.CoreSpeechKit';
 import { BusinessError } from '@kit.BasicServicesKit';
-import { fileIo } from '@kit.CoreFileKit';
 import { PromptAction } from '@kit.ArkUI';
-//import FileCapturer from './FileCapturer';
+
 
 const TAG = 'AsrDemo';
 
 let asrEngine: speechRecognizer.SpeechRecognitionEngine;
 
-@Entry
+
 @Component
 @Reusable
-struct Index {
+export struct audioToText {
   @State createCount: number = 0;
   @State result: boolean = false;
   @State voiceInfo: string = "";
@@ -20,7 +19,7 @@ struct Index {
   @State generatedText: string = "Default Text";
   @State uiContextAudio: UIContext = this.getUIContext()
   @State promptAction: PromptAction = this.uiContextAudio.getPromptAction();
-
+  @State isPlaying: boolean = false;
   //private mFileCapturer: FileCapturer = new FileCapturer();
 
   build() {
@@ -42,121 +41,128 @@ struct Index {
           .width('100%')
           .padding({ left: 20, right: 20, top: 20, bottom: 20 })
 
-          Button() {
-            Text("CreateEngineByCallback")
-              .fontColor(Color.White)
-              .fontSize(20)
-          }
-          .type(ButtonType.Capsule)
-          .backgroundColor("#0x317AE7")
-          .width("80%")
-          .height(50)
-          .margin(10)
-          .onClick(async () => {
-            this.createByCallback();
-            //this.createByCallback()
-            this.sleep(500);
-            this.setListener();
-            this.startRecording();
-            this.createCount++;
-            console.info(TAG, `CreateAsrEngine：createCount:${this.createCount}`);
-            //await this.sleep(500);
-            //this.setListener();
-            this.promptAction.showToast({
-              message: 'CreateEngine succeeded!',
-              duration: 2000
-            });
-          })
-
-          Button() {
-            Text("startRecording")
-              .fontColor(Color.White)
-              .fontSize(20)
-          }
-          .type(ButtonType.Capsule)
-          .backgroundColor("#0x317AE7")
-          .width("80%")
-          .height(50)
-          .margin(10)
-          .onClick(() => {
-            this.startRecording();
-            this.promptAction.showToast({
-              message: 'start Recording',
-              duration: 2000
-            });
-          })
-
-          Button() {
-            Text("audioToText")
-              .fontColor(Color.White)
-              .fontSize(20)
-          }
-          .type(ButtonType.Capsule)
-          .backgroundColor("#0x317AE7")
-          .width("80%")
-          .height(50)
-          .margin(10)
-          .onClick(() => {
-            //this.audioToText();
-            this.promptAction.showToast({
-              message: 'start audioToText',
-              duration: 2000
-            });
-          })
-
-          Button() {
-            Text("queryLanguagesCallback")
-              .fontColor(Color.White)
-              .fontSize(20)
-          }
-          .type(ButtonType.Capsule)
-          .backgroundColor("#0x317AE7")
-          .width("80%")
-          .height(50)
-          .margin(10)
-          .onClick(() => {
-            try{
-              this.queryLanguagesCallback();
-              this.promptAction.showToast({
-                message: 'queryLanguages succeeded!',
-                duration: 2000
-              });
-            } catch (err) {
-              this.generatedText = `Failed to query language information. message: ${err.message}.`
-              this.promptAction.showToast({
-                message: 'queryLanguages failed!',
-                duration: 2000
-              });
+        if (!this.isPlaying){
+          Column(){
+            Button() {
+              Text("开始游戏")
+                .fontColor(Color.White)
+                .fontSize(20)
             }
-          })
+            .type(ButtonType.Capsule)
+            .backgroundColor("#0x317AE7")
+            .width("80%")
+            .height(50)
+            .margin(10)
+            .onClick(async () => {
+              this.createByCallback();
+              //this.createByCallback()
+              this.sleep(500);
+              this.setListener();
+              this.startRecording();
+              this.createCount++;
+              console.info(TAG, `CreateAsrEngine：createCount:${this.createCount}`);
+              //await this.sleep(500);
+              //this.setListener();
+              this.promptAction.showToast({
+                message: 'CreateEngine succeeded!',
+                duration: 2000
+              });
+              this.isPlaying = true
+            })
 
-          Button() {
-            Text("shutdown")
-              .fontColor(Color.White)
-              .fontSize(20)
-          }
-          .type(ButtonType.Capsule)
-          .backgroundColor("#0x317AA7")
-          .width("80%")
-          .height(50)
-          .margin(10)
-          .onClick(() => {
-            // 释放引擎
-            try{
-              asrEngine.shutdown();
-              this.generatedText = `The engine has been released.`
-              this.promptAction.showToast({
-                message: 'shutdown succeeded!',
-                duration: 2000
-              });
-            } catch (err) {
-              this.generatedText = `Failed to release engine. message: ${err.message}.`
-              this.promptAction.showToast({
-                message: 'shutdown failed!',
-                duration: 2000
-              });
+
+            // Button() {
+            //   Text("startRecording")
+            //     .fontColor(Color.White)
+            //     .fontSize(20)
+            // }
+            // .type(ButtonType.Capsule)
+            // .backgroundColor("#0x317AE7")
+            // .width("80%")
+            // .height(50)
+            // .margin(10)
+            // .onClick(() => {
+            //   this.startRecording();
+            //   this.promptAction.showToast({
+            //     message: 'start Recording',
+            //     duration: 2000
+            //   });
+            // })
+            // Button() {
+            //   Text("audioToText")
+            //     .fontColor(Color.White)
+            //     .fontSize(20)
+            // }
+            // .type(ButtonType.Capsule)
+            // .backgroundColor("#0x317AE7")
+            // .width("80%")
+            // .height(50)
+            // .margin(10)
+            // .onClick(() => {
+            //   //this.audioToText();
+            //   this.promptAction.showToast({
+            //     message: 'start audioToText',
+            //     duration: 2000
+            //   });
+            // })
+            //
+            // Button() {
+            //   Text("queryLanguagesCallback")
+            //     .fontColor(Color.White)
+            //     .fontSize(20)
+            // }
+            // .type(ButtonType.Capsule)
+            // .backgroundColor("#0x317AE7")
+            // .width("80%")
+            // .height(50)
+            // .margin(10)
+            // .onClick(() => {
+            //   try{
+            //     this.queryLanguagesCallback();
+            //     this.promptAction.showToast({
+            //       message: 'queryLanguages succeeded!',
+            //       duration: 2000
+            //     });
+            //   } catch (err) {
+            //     this.generatedText = `Failed to query language information. message: ${err.message}.`
+            //     this.promptAction.showToast({
+            //       message: 'queryLanguages failed!',
+            //       duration: 2000
+            //     });
+            //   }
+            // })
+
+        if (this.isPlaying){}
+            Button() {
+              Text("shutdown")
+                .fontColor(Color.White)
+                .fontSize(20)
             }
-          })
+            .type(ButtonType.Capsule)
+            .backgroundColor("#0x317AA7")
+            .width("80%")
+            .height(50)
+            .margin(10)
+            .onClick(() => {
+              // 释放引擎
+              try{
+                asrEngine.shutdown();
+                this.generatedText = `The engine has been released.`
+                this.promptAction.showToast({
+                  message: 'shutdown succeeded!',
+                  duration: 2000
+                });
+              } catch (err) {
+                this.generatedText = `Failed to release engine. message: ${err.message}.`
+                this.promptAction.showToast({
+                  message: 'shutdown failed!',
+                  duration: 2000
+                });
+              }
+            })
+
+          }
+        }
         }
         .layoutWeight(1)
       }
@@ -170,7 +176,7 @@ struct Index {
   // 创建引擎，通过callback形式返回
   private createByCallback() {
     // 设置创建引擎参数
-    let extraParam: Record<string, Object> = {"locate": "CN", "recognizerMode": "short"};
+    let extraParam: Record<string, Object> = {"locate": "CN", "recognizerMode": "long"};
     let initParamsInfo: speechRecognizer.CreateEngineParams = {
       language: 'zh-CN',
       online: 1,

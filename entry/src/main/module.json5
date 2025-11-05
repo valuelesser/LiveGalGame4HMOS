@@ -14,6 +14,10 @@
     "abilities": [
       {
         "name": "EntryAbility",
+
+
+//        "orientation": "unspecified",
+//        "supportWindowMode": ["fullscreen"],
         "srcEntry": "./ets/entryability/EntryAbility.ets",
         "description": "$string:EntryAbility_desc",
         "icon": "$media:layered_image",
