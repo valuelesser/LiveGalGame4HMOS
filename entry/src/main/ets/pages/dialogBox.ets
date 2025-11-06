@@ -10,7 +10,7 @@ function displayDialogOrNot(key:string[],text:string):boolean{
   return pattern.test(text);
 }
 
-export let key: string[] = ["什么", "吗"]; // 示例关键词数组
+export let key: string[] = ["什么", "吗","?"]; // 示例关键词数组
 
 
 @CustomDialog
@@ -22,7 +22,10 @@ struct CustomDialogExample {
   }
   build() {
     Column() {
-      Button('好的呢')
+      Text('该做出选择了')
+        .margin(20)
+        .width('80%')
+      Button('好呀好呀')
         .onClick(() => {
           if (this.controller != undefined) {
             this.controller.close();
@@ -30,7 +33,7 @@ struct CustomDialogExample {
         })
         .margin(20)
         .width('80%')
-      Button('我不认为是这样')
+      Button('不了')
         .onClick(() => {
           if (this.controller != undefined) {
             this.controller.close();
@@ -45,7 +48,7 @@ struct CustomDialogExample {
 
 @Entry
 @Component
-struct CustomDialogUser {
+export struct CustomDialogUser {
   @StorageLink('generatedText') displayText: string = '';
 
   dialogController: CustomDialogController | null = new CustomDialogController({
@@ -70,12 +73,12 @@ struct CustomDialogUser {
     customStyle: false,
     cornerRadius: 20,
     width: 300,
-    height: 160,
+    height: 220,
     borderWidth: 1,
     borderStyle: BorderStyle.Dashed,//使用borderStyle属性，需要和borderWidth属性一起使用
-    borderColor: Color.Blue,//使用borderColor属性，需要和borderWidth属性一起使用
+    borderColor: Color.Pink,//使用borderColor属性，需要和borderWidth属性一起使用
     backgroundColor: Color.White,
-    shadow: ({ radius: 20, color: Color.Grey, offsetX: 50, offsetY: 0}),
+    shadow: ({ radius: 20, color: Color.Pink, offsetX: 50, offsetY: 0}),
   })
   // 在自定义组件即将析构销毁时将dialogController置空
   aboutToDisappear() {
@@ -98,8 +101,14 @@ struct CustomDialogUser {
 
   build() {
     Column() {
-      if ( true ){
-
+      if ( displayDialogOrNot(key,this.displayText) ){
+        Text('hello')
+          .opacity(0)
+          .onAppear(()=>{
+            if (this.dialogController){
+              this.dialogController.open()
+            }
+          })
       }
     }.width('100%').margin({ top: 5 })
   }

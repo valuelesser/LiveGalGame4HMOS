@@ -24,6 +24,8 @@ export struct audioToText {
   @State isPlaying: boolean = false;
   //private mFileCapturer: FileCapturer = new FileCapturer();
 
+
+
   build() {
     Stack() {
       Column(){
@@ -63,8 +65,8 @@ export struct audioToText {
         }
         .width('100%')
         .constraintSize({ minHeight: 150 })
-        .border({ width: 1, radius: 5 })
-        .backgroundColor('#d3d3d3')
+        //.border({ width: 1, radius: 5 })
+        .backgroundColor(Color.Pink)
         .padding(20)
         .alignItems(HorizontalAlign.Start)
       }
@@ -86,7 +88,7 @@ export struct audioToText {
             .onClick(async () => {
               this.createByCallback();
               //this.createByCallback()
-              this.sleep(500);
+              //this.sleep(500);
               this.setListener();
               this.startRecording();
               this.createCount++;

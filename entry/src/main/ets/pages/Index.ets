@@ -1,5 +1,6 @@
 import { cameraAbility } from './cameraAbility'
 import { audioToText } from './audioToText'
+import { CustomDialogUser } from './dialogBox';
 
 
 AppStorage.SetOrCreate<string>('generatedText', '');
@@ -13,6 +14,7 @@ struct Index {
     Stack(){
       cameraAbility()
       audioToText()
+      CustomDialogUser()
     }
   }
 }
