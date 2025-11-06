@@ -7,7 +7,7 @@ const TAG = 'AsrDemo';
 
 let asrEngine: speechRecognizer.SpeechRecognitionEngine;
 
-
+@Entry
 @Component
 @Reusable
 export struct audioToText {
@@ -16,31 +16,61 @@ export struct audioToText {
   @State voiceInfo: string = "";
   @State sessionId: string = "123456";
   @State sessionId2: string = "1234567";
-  @State generatedText: string = "Default Text";
+
+  @StorageLink('generatedText') generatedText: string = '';
+  //@State generatedText: string = "Default Text";
   @State uiContextAudio: UIContext = this.getUIContext()
   @State promptAction: PromptAction = this.uiContextAudio.getPromptAction();
   @State isPlaying: boolean = false;
   //private mFileCapturer: FileCapturer = new FileCapturer();
 
   build() {
-    Column() {
-      Scroll() {
-        Column() {
-          Row() {
-            Column() {
-              Text(this.generatedText)
-                .fontColor($r('sys.color.ohos_id_color_text_secondary'))
-            }
-            .width('100%')
-            .constraintSize({ minHeight: 100 })
-            .border({ width: 1, radius: 5 })
-            .backgroundColor('#d3d3d3')
-            .padding(20)
-            .alignItems(HorizontalAlign.Start)
-          }
-          .width('100%')
-          .padding({ left: 20, right: 20, top: 20, bottom: 20 })
+    Stack() {
+      Column(){
 
+        // if (this.isPlaying){
+        //   Button() {
+        //     Text("退出游戏")
+        //       .fontColor(Color.White)
+        //       .fontSize(20)
+        //   }
+        //   .type(ButtonType.Capsule)
+        //   .backgroundColor("#0x317AA7")
+        //   .width("80%")
+        //   .height(50)
+        //   .margin(10)
+        //   .onClick(() => {
+        //     // 释放引擎
+        //     try{
+        //       asrEngine.shutdown();
+        //       this.generatedText = `The engine has been released.`
+        //       this.promptAction.showToast({
+        //         message: 'shutdown succeeded!',
+        //         duration: 2000
+        //       });
+        //     } catch (err) {
+        //       this.generatedText = `Failed to release engine. message: ${err.message}.`
+        //       this.promptAction.showToast({
+        //         message: 'shutdown failed!',
+        //         duration: 2000
+        //       });
+        //     }
+        //   })
+        // }
+        Column() {
+          Text(this.generatedText)
+            .fontColor($r('sys.color.ohos_id_color_text_secondary'))
+        }
+        .width('100%')
+        .constraintSize({ minHeight: 150 })
+        .border({ width: 1, radius: 5 })
+        .backgroundColor('#d3d3d3')
+        .padding(20)
+        .alignItems(HorizontalAlign.Start)
+      }
+      .height('100%')
+      .justifyContent(FlexAlign.End)
+      Column(){
         if (!this.isPlaying){
           Column(){
             Button() {
@@ -69,7 +99,6 @@ export struct audioToText {
               });
               this.isPlaying = true
             })
-
 
             // Button() {
             //   Text("startRecording")
@@ -132,44 +161,13 @@ export struct audioToText {
             //   }
             // })
 
-        if (this.isPlaying){}
-            Button() {
-              Text("shutdown")
-                .fontColor(Color.White)
-                .fontSize(20)
-            }
-            .type(ButtonType.Capsule)
-            .backgroundColor("#0x317AA7")
-            .width("80%")
-            .height(50)
-            .margin(10)
-            .onClick(() => {
-              // 释放引擎
-              try{
-                asrEngine.shutdown();
-                this.generatedText = `The engine has been released.`
-                this.promptAction.showToast({
-                  message: 'shutdown succeeded!',
-                  duration: 2000
-                });
-              } catch (err) {
-                this.generatedText = `Failed to release engine. message: ${err.message}.`
-                this.promptAction.showToast({
-                  message: 'shutdown failed!',
-                  duration: 2000
-                });
-              }
-            })
-
           }
         }
-        }
-        .layoutWeight(1)
       }
-      .width('100%')
-      .height('100%')
 
     }
+    .height('100%')
+
   }
 
 
