@@ -7,7 +7,6 @@ import { common } from '@kit.AbilityKit';
 
 
 @Entry
-@Reusable
 @Component
 export struct cameraAbility {
   private displayObj = display.getDefaultDisplaySync();

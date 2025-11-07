@@ -9,16 +9,13 @@ let asrEngine: speechRecognizer.SpeechRecognitionEngine;
 
 @Entry
 @Component
-@Reusable
 export struct audioToText {
-  @State createCount: number = 0;
+  //@State createCount: number = 0;
   @State result: boolean = false;
   @State voiceInfo: string = "";
   @State sessionId: string = "123456";
   @State sessionId2: string = "1234567";
-
   @StorageLink('generatedText') generatedText: string = '';
-  //@State generatedText: string = "Default Text";
   @State uiContextAudio: UIContext = this.getUIContext()
   @State promptAction: PromptAction = this.uiContextAudio.getPromptAction();
   @State isPlaying: boolean = false;
@@ -91,14 +88,14 @@ export struct audioToText {
               //this.sleep(500);
               this.setListener();
               this.startRecording();
-              this.createCount++;
-              console.info(TAG, `CreateAsrEngine：createCount:${this.createCount}`);
+              //this.createCount++;
+              //console.info(TAG, `CreateAsrEngine：createCount:${this.createCount}`);
               //await this.sleep(500);
               //this.setListener();
-              this.promptAction.showToast({
-                message: 'CreateEngine succeeded!',
-                duration: 2000
-              });
+              // this.promptAction.showToast({
+              //   message: 'CreateEngine succeeded!',
+              //   duration: 2000
+              // });
               this.isPlaying = true
             })
 
