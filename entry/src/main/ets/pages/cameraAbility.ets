@@ -44,12 +44,6 @@ export struct cameraAbility {
   }
 
   aboutToAppear(): void {
-    if (this.windowClass){
-
-      this.windowClass.setPreferredOrientation(window.Orientation.LANDSCAPE)
-      this.windowClass.setWindowLayoutFullScreen(true);
-      this.windowClass.setWindowSystemBarEnable([]);
-    }
 
     this.requestPermissionsFn();
   }
@@ -71,36 +65,38 @@ export struct cameraAbility {
 
   build() {
     Stack(){
+      Row(){
+          if (this.isShow) {
+            XComponent({
+              id: 'componentId',
+              type: XComponentType.SURFACE,
+              controller: this.xComponentCtl
+            })
+              .rotate({  // 关键旋转配置
+                angleZ: 270,  // Z轴旋转270°
+                centerX: '50%', // 旋转中心X坐标为组件宽度50%
+                centerY: '50%'  // 旋转中心Y坐标为组件高度50%
+              })
+              .onLoad(async () => {
+                console.info('onLoad is called');
+                this.xComponentSurfaceId = this.xComponentCtl.getXComponentSurfaceId(); // 获取组件surfaceId。
+                // 初始化相机，组件实时渲染每帧预览流数据。
+                this.initCamera()
+              })
+              .width(this.uiContext.px2vp(this.displayObj.width))
+              .height(this.uiContext.px2vp(this.displayObj.height))
 
-      Column() {
-        if (this.isShow) {
-          XComponent({
-            id: 'componentId',
-            type: XComponentType.SURFACE,
-            controller: this.xComponentCtl
-          })
-            .rotate({  // 关键旋转配置
-              angleZ: 270,  // Z轴旋转270°
-              centerX: '50%', // 旋转中心X坐标为组件宽度50%
-              centerY: '50%'  // 旋转中心Y坐标为组件高度50%
-            })
-            .onLoad(async () => {
-              console.info('onLoad is called');
-              this.xComponentSurfaceId = this.xComponentCtl.getXComponentSurfaceId(); // 获取组件surfaceId。
-              // 初始化相机，组件实时渲染每帧预览流数据。
-              this.initCamera()
-            })
-            .width(this.uiContext.px2vp(this.imageHeight))
-            //.height('100%')
-          // .width(this.uiContext.px2vp(this.imageHeight))
-          // .height(this.uiContext.px2vp(this.imageWidth))
         }
+        // .width('100%')
+        // .height('100%')
       }
-      .zIndex(1)
-      .justifyContent(FlexAlign.Center)
-       .height('100%')
-       .width('100%')
+      // .width('100%')
+      // .height('100%')
     }
+    .zIndex(1)
+    .alignContent(Alignment.Center)
+    .width('100%')
+    .height('100%')
   }
 
 

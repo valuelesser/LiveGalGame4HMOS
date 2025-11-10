@@ -63,7 +63,7 @@ export struct audioToText {
         .width('100%')
         .constraintSize({ minHeight: 150 })
         //.border({ width: 1, radius: 5 })
-        .backgroundColor(Color.Pink)
+        .backgroundColor("#80FFC0CB")
         .padding(20)
         .alignItems(HorizontalAlign.Start)
       }
@@ -83,11 +83,11 @@ export struct audioToText {
             .height(50)
             .margin(10)
             .onClick(async () => {
-              this.createByCallback();
+              this.createByCallback()
               //this.createByCallback()
               //this.sleep(500);
-              this.setListener();
-              this.startRecording();
+              this.setListener()
+              this.startRecording()
               //this.createCount++;
               //console.info(TAG, `CreateAsrEngine：createCount:${this.createCount}`);
               //await this.sleep(500);
