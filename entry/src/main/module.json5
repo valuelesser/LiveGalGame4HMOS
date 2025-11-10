@@ -16,7 +16,7 @@
         "name": "EntryAbility",
 
 
-//        "orientation": "unspecified",
+//        "orientation": "landscape",
 //        "supportWindowMode": ["fullscreen"],
         "srcEntry": "./ets/entryability/EntryAbility.ets",
         "description": "$string:EntryAbility_desc",
