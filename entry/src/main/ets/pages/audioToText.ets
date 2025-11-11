@@ -173,7 +173,7 @@ export struct audioToText {
   // 创建引擎，通过callback形式返回
   private createByCallback() {
     // 设置创建引擎参数
-    let extraParam: Record<string, Object> = {"locate": "CN", "recognizerMode": "long"};
+    let extraParam: Record<string, Object> = {"locate": "CN", "recognizerMode": "long","maxAudioDuration": 8 * 60 * 60 * 1000};
     let initParamsInfo: speechRecognizer.CreateEngineParams = {
       language: 'zh-CN',
       online: 1,
@@ -221,7 +221,7 @@ export struct audioToText {
       "recognitionMode": 0,
       "vadBegin": 2000,
       "vadEnd": 3000,
-      "maxAudioDuration": 20000
+      "maxAudioDuration": 8 * 60 * 60 * 1000
     }
     let recognizerParams: speechRecognizer.StartParams = {
       sessionId: this.sessionId,
