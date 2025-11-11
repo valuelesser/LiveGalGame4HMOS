@@ -1,20 +1,5 @@
 {
   "app": {
-    "signingConfigs": [
-      {
-        "name": "default",
-        "type": "HarmonyOS",
-        "material": {
-          "certpath": "C:\\Users\\ASUS\\.ohos\\config\\default_LiveGal_kGZfFfeJQ9d_WIewO-UfNAPTz_sc4AduZuh_MAsWWM0=.cer",
-          "keyAlias": "debugKey",
-          "keyPassword": "0000001A4E98A16AF79205E78E1D3A5E4458767A834FCF5A96BE4EE33BD386B6F0E4FA23118ED4E3817C",
-          "profile": "C:\\Users\\ASUS\\.ohos\\config\\default_LiveGal_kGZfFfeJQ9d_WIewO-UfNAPTz_sc4AduZuh_MAsWWM0=.p7b",
-          "signAlg": "SHA256withECDSA",
-          "storeFile": "C:\\Users\\ASUS\\.ohos\\config\\default_LiveGal_kGZfFfeJQ9d_WIewO-UfNAPTz_sc4AduZuh_MAsWWM0=.p12",
-          "storePassword": "0000001A39B12A73329D5414790EA00FF592600F2D5E124A7D0E224E12B3E9998787755C608513611DF3"
-        }
-      }
-    ],
     "products": [
       {
         "name": "default",
@@ -32,10 +17,25 @@
     ],
     "buildModeSet": [
       {
-        "name": "debug",
+        "name": "debug"
       },
       {
         "name": "release"
+      }
+    ],
+    "signingConfigs": [
+      {
+        "name": "default",
+        "type": "HarmonyOS",
+        "material": {
+          "certpath": "C:\\Users\\ASUS\\.ohos\\config\\default_LiveGal_MBoAy3xwrK533kbL3gPHH2ORK3f-wDZjXzknyMgYANA=.cer",
+          "keyAlias": "debugKey",
+          "keyPassword": "0000001929477472400212998EA5245FA9EBFFDD49A0B3F48401C78677820D92751D57A33BFC73C2A8",
+          "profile": "C:\\Users\\ASUS\\.ohos\\config\\default_LiveGal_MBoAy3xwrK533kbL3gPHH2ORK3f-wDZjXzknyMgYANA=.p7b",
+          "signAlg": "SHA256withECDSA",
+          "storeFile": "C:\\Users\\ASUS\\.ohos\\config\\default_LiveGal_MBoAy3xwrK533kbL3gPHH2ORK3f-wDZjXzknyMgYANA=.p12",
+          "storePassword": "00000019AAD595219A93F245C944DEB0FDA3579518C196AD3C35DB6D57BC5D47EBED537DD11F83E106"
+        }
       }
     ]
   },

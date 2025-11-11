@@ -10,7 +10,7 @@ function displayDialogOrNot(key:string[],text:string):boolean{
   return pattern.test(text);
 }
 
-export let key: string[] = ["什么", "吗","?"]; // 示例关键词数组
+export let key: string[] = ["什么", "吗","?","啥"]; // 示例关键词数组
 
 
 @CustomDialog

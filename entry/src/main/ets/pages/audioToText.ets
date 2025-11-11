@@ -58,12 +58,20 @@ export struct audioToText {
         // }
         Column() {
           Text(this.generatedText)
-            .fontColor($r('sys.color.ohos_id_color_text_secondary'))
+            .fontColor(Color.White)
         }
+        .linearGradient({
+          angle: 0,                          // 渐变角度（0-360）
+          colors: [
+            ['#ffff9393', 0],                // 起始颜色
+            ['#00ff9393', 1]                 // 终止颜色
+          ],
+          repeating: false
+        })
         .width('100%')
         .constraintSize({ minHeight: 150 })
         //.border({ width: 1, radius: 5 })
-        .backgroundColor("#80FFC0CB")
+        //.backgroundColor("#ffff9393")
         .padding(20)
         .alignItems(HorizontalAlign.Start)
       }
@@ -82,84 +90,15 @@ export struct audioToText {
             .width("80%")
             .height(50)
             .margin(10)
-            .onClick(async () => {
+            .onAppear(()=>{
               this.createByCallback()
-              //this.createByCallback()
-              //this.sleep(500);
+
+            })
+            .onClick(async () => {
               this.setListener()
               this.startRecording()
-              //this.createCount++;
-              //console.info(TAG, `CreateAsrEngine：createCount:${this.createCount}`);
-              //await this.sleep(500);
-              //this.setListener();
-              // this.promptAction.showToast({
-              //   message: 'CreateEngine succeeded!',
-              //   duration: 2000
-              // });
               this.isPlaying = true
             })
-
-            // Button() {
-            //   Text("startRecording")
-            //     .fontColor(Color.White)
-            //     .fontSize(20)
-            // }
-            // .type(ButtonType.Capsule)
-            // .backgroundColor("#0x317AE7")
-            // .width("80%")
-            // .height(50)
-            // .margin(10)
-            // .onClick(() => {
-            //   this.startRecording();
-            //   this.promptAction.showToast({
-            //     message: 'start Recording',
-            //     duration: 2000
-            //   });
-            // })
-            // Button() {
-            //   Text("audioToText")
-            //     .fontColor(Color.White)
-            //     .fontSize(20)
-            // }
-            // .type(ButtonType.Capsule)
-            // .backgroundColor("#0x317AE7")
-            // .width("80%")
-            // .height(50)
-            // .margin(10)
-            // .onClick(() => {
-            //   //this.audioToText();
-            //   this.promptAction.showToast({
-            //     message: 'start audioToText',
-            //     duration: 2000
-            //   });
-            // })
-            //
-            // Button() {
-            //   Text("queryLanguagesCallback")
-            //     .fontColor(Color.White)
-            //     .fontSize(20)
-            // }
-            // .type(ButtonType.Capsule)
-            // .backgroundColor("#0x317AE7")
-            // .width("80%")
-            // .height(50)
-            // .margin(10)
-            // .onClick(() => {
-            //   try{
-            //     this.queryLanguagesCallback();
-            //     this.promptAction.showToast({
-            //       message: 'queryLanguages succeeded!',
-            //       duration: 2000
-            //     });
-            //   } catch (err) {
-            //     this.generatedText = `Failed to query language information. message: ${err.message}.`
-            //     this.promptAction.showToast({
-            //       message: 'queryLanguages failed!',
-            //       duration: 2000
-            //     });
-            //   }
-            // })
-
           }
         }
       }

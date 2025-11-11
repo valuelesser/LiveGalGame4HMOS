@@ -3,6 +3,7 @@ import { audioToText } from './audioToText'
 import { CustomDialogUser } from './dialogBox';
 import { window } from '@kit.ArkUI';
 import { common } from '@kit.AbilityKit';
+import { Favorability } from './favorability';
 
 
 AppStorage.SetOrCreate<string>('generatedText', '');
@@ -29,8 +30,10 @@ struct Index {
     Stack(){
       cameraAbility()
         .zIndex(0)
+      Favorability()
       audioToText()
       CustomDialogUser()
+
     }
   }
 }
