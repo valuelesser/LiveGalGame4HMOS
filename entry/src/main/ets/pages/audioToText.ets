@@ -77,32 +77,31 @@ export struct audioToText {
       }
       .height('100%')
       .justifyContent(FlexAlign.End)
-      Column(){
-        if (!this.isPlaying){
-          Column(){
-            Button() {
-              Text("开始游戏")
-                .fontColor(Color.White)
-                .fontSize(20)
-            }
-            .type(ButtonType.Capsule)
-            .backgroundColor("#0x317AE7")
-            .width("80%")
-            .height(50)
-            .margin(10)
+      if (!this.isPlaying){
+        Column(){
+          Image($r('app.media.startPage'))
+            .width("100%")
             .onAppear(()=>{
               this.createByCallback()
-
             })
             .onClick(async () => {
               this.setListener()
               this.startRecording()
               this.isPlaying = true
             })
-          }
         }
+        .zIndex(1)
+        Row(){
+          Image($r('app.media._8plus'))
+            .height(50)
+          Image($r('app.media._12plus'))
+            .height(50)
+          Image($r('app.media._16plus'))
+            .height(50)
+        }
+        . position({ x: '80%', y: '80%' })
+        .zIndex(2)
       }
-
     }
     .height('100%')
 

@@ -30,11 +30,11 @@
         "material": {
           "certpath": "C:\\Users\\ASUS\\.ohos\\config\\default_LiveGal_MBoAy3xwrK533kbL3gPHH2ORK3f-wDZjXzknyMgYANA=.cer",
           "keyAlias": "debugKey",
-          "keyPassword": "0000001929477472400212998EA5245FA9EBFFDD49A0B3F48401C78677820D92751D57A33BFC73C2A8",
+          "keyPassword": "0000001B661F0AD51A88DC0941343BCBF5ADFC5D1CBF3EF32375B3F8CDC4E50269274DC5B333DD2DC2C1A9",
           "profile": "C:\\Users\\ASUS\\.ohos\\config\\default_LiveGal_MBoAy3xwrK533kbL3gPHH2ORK3f-wDZjXzknyMgYANA=.p7b",
           "signAlg": "SHA256withECDSA",
           "storeFile": "C:\\Users\\ASUS\\.ohos\\config\\default_LiveGal_MBoAy3xwrK533kbL3gPHH2ORK3f-wDZjXzknyMgYANA=.p12",
-          "storePassword": "00000019AAD595219A93F245C944DEB0FDA3579518C196AD3C35DB6D57BC5D47EBED537DD11F83E106"
+          "storePassword": "0000001BA0D330D374718B79160D917CD26029304690F02E55E647CECC8DE4BEF70190E1CB9A194BB1EEED"
         }
       }
     ]
