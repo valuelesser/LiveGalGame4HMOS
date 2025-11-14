@@ -100,7 +100,21 @@ export struct audioToText {
             .height(50)
         }
         . position({ x: '80%', y: '80%' })
-        .zIndex(2)
+        .zIndex(1)
+        .touchable(false)
+        Column(){
+          Text()
+            .layoutWeight(1)
+          Text('< 点击任意位置开始游戏 >')
+            .fontColor(Color.White)
+            .fontWeight(30)
+            .fontSize(20)
+            .margin(10)
+        }
+        .touchable(false)
+        .zIndex(1)
+        .height('100%')
+        .width('100%')
       }
     }
     .height('100%')
