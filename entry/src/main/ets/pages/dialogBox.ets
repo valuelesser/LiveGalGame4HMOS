@@ -10,8 +10,11 @@ function displayDialogOrNot(key:string[],text:string):boolean{
   return pattern.test(text);
 }
 
-export let key: string[] = ["什么", "吗","?","啥"]; // 示例关键词数组
+export let key: string[] = ["什么", "吗","啥"]; // 示例关键词数组,以后也有机会开放自定义;也有可能简单改一下识别问号
 
+
+
+//从这往下是我从开发者联盟里面的实例代码复制的,还没好好看
 
 @CustomDialog
 struct CustomDialogExample {
@@ -77,7 +80,7 @@ export struct CustomDialogUser {
     borderWidth: 1,
     borderStyle: BorderStyle.Dashed,//使用borderStyle属性，需要和borderWidth属性一起使用
     borderColor: Color.Pink,//使用borderColor属性，需要和borderWidth属性一起使用
-    backgroundColor: Color.White,
+    backgroundColor: Color.Transparent,
     shadow: ({ radius: 20, color: Color.Pink, offsetX: 50, offsetY: 0}),
   })
   // 在自定义组件即将析构销毁时将dialogController置空
@@ -101,20 +104,16 @@ export struct CustomDialogUser {
 
   build() {
     Column() {
-      if ( displayDialogOrNot(key,this.displayText) ){
-        Text('hello')
+      if ( displayDialogOrNot(key,this.displayText) ){    //判断什么时候展示选择框
+        Text('')
           .opacity(0)
           .onAppear(()=>{
             if (this.dialogController){
               this.dialogController.open()
             }
-          })
+          })    //在onappear 中回调，展示对话框
       }
     }.width('100%').margin({ top: 5 })
   }
 }
 
-
-// if (this.dialogController){
-//   this.dialogController.open()
-// }

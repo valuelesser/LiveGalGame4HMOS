@@ -1,3 +1,7 @@
+//这个页面没啥好看的,也是复制下来的,然后做了一点修改,使其横屏占满全屏,注释懒得写了,因为整活感觉也没有在这一页整活的必要
+// 以后可能会加根据好感度不同添加不同的滤镜
+//以后在考虑的,(现在还不会)
+
 import { camera } from '@kit.CameraKit';
 import { BusinessError } from '@kit.BasicServicesKit';
 import { abilityAccessCtrl, Permissions } from '@kit.AbilityKit';

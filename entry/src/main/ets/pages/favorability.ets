@@ -1,4 +1,4 @@
-
+//好感度条页面
 @Entry
 @Component
 export struct Favorability {
@@ -8,7 +8,7 @@ export struct Favorability {
   @State difficult:number = 0.5
 
   onChange(){
-    this.progressValue += 1/this.difficult // 有变化好感度加5
+    this.progressValue += 1/this.difficult // 有变化好感度加1/难度,以后难度估计会开放自定义
   }
 
   // 启动计时

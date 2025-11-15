@@ -56,10 +56,14 @@ export struct audioToText {
         //     }
         //   })
         // }
+        //为退出游戏预留
+
+
         Column() {
           Text(this.generatedText)
             .fontColor(Color.White)
         }
+        // 展示聊天框
         .linearGradient({
           angle: 0,                          // 渐变角度（0-360）
           colors: [
@@ -77,7 +81,7 @@ export struct audioToText {
       }
       .height('100%')
       .justifyContent(FlexAlign.End)
-      if (!this.isPlaying){
+      if (!this.isPlaying){   //在非开始游戏时展示游戏开始页面
         Column(){
           Image($r('app.media.startPage'))
             .width("100%")
