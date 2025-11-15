@@ -17,23 +17,21 @@ struct Index {
 
   aboutToAppear(): void {
     if (this.windowClass){
-
       this.windowClass.setPreferredOrientation(window.Orientation.LANDSCAPE)
       this.windowClass.setWindowLayoutFullScreen(true);
       this.windowClass.setWindowSystemBarEnable([]);
     }
-
-  }
+  }//启动时设置为横屏显示
 
 
   build() {
     Stack(){
-      cameraAbility()
+      cameraAbility()  //展示摄像头拍摄的画面
         .zIndex(0)
-      Favorability()
-      audioToText()
-      CustomDialogUser()
-
+      Favorability()  //展示好感度条
+      audioToText()      //文本框，启动界面
+      CustomDialogUser()   //弹窗
+//由代码易得，实际显示界面是由以上三个叠加显示得到的结果
     }
   }
 }
